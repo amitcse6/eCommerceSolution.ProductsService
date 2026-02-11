@@ -398,6 +398,6 @@ FodyWeavers.xsd
 *.sln.iml
 .idea/
 
-# App-specific settings (consider uncommenting these if needed)
-# appsettings.Development.json
-# appsettings.Local.json
+# App-specific settings with sensitive data
+**/appsettings.Development.json
+**/appsettings.Local.json
