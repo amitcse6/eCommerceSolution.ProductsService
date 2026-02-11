@@ -6,6 +6,7 @@ using FluentValidation.AspNetCore;
 using ProductsMicroService.API.APIEndpoints;
 using ProductsMicroService.API.Middleware;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,12 +29,35 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 // FluentValidation
 builder.Services.AddFluentValidationAutoValidation();
 
+// Add Swagger/OpenAPI support
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+// Add CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("http://localhost:4200")
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
 app.UseExceptionHandlingMiddleware();
 app.UseRouting();
 
+// Enable CORS
+app.UseCors();
+
+// Swagger
+app.UseSwagger();
+app.UseSwaggerUI();
+
 // Auth
+app.UseHttpsRedirection();
 app.UseAuthorization();
 app.UseAuthentication();
 
