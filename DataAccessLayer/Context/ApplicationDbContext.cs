@@ -11,5 +11,8 @@ public class ApplicationDbContext: DbContext
 
     public DbSet<Product> Products { get; set; }
 
-
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+    }
 }
