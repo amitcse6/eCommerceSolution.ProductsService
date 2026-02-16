@@ -1,12 +1,9 @@
-
-
+using System.Text.Json.Serialization;
 using BusinessLogicLayer;
 using DataAccessLayer;
 using FluentValidation.AspNetCore;
 using ProductsMicroService.API.APIEndpoints;
 using ProductsMicroService.API.Middleware;
-using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
