@@ -30,7 +30,7 @@ services:
        - POSTGRES_PASSWORD=Bjit@1234567
        - POSTGRES_DB=eCommerceUsers
      ports:
-        - "5432:5432"
+        - "5433:5432"
      volumes: 
         - ./ecommerce/postgres-init:/docker-entrypoint-initdb.d
      networks:
@@ -42,7 +42,7 @@ services:
       POSTGRES_HOST: postgres-container
       POSTGRES_PASSWORD: Bjit@1234567
     ports:
-      - "9090:9090"
+      - "9091:9090"
     networks:
       - ecommerce-network
     depends_on: 
